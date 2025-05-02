@@ -1,0 +1,189 @@
+{
+    "diseases": [
+        {
+            "id": 1,
+            "name": "Common Cold",
+            "type": "Viral Infection",
+            "effects": [
+                "Sneezy nose 🤧",
+                "Sore throat feeling",
+                "Tired and sleepy 😴",
+                "Coughing like a puppy",
+                "Just want to stay in bed"
+            ],
+            "advantages": [
+                "Extra rest time 💤",
+                "Warm soup treats",
+                "Family care and love ❤️"
+            ],
+            "disadvantages": [
+                "Missing fun activities",
+                "Can't taste yummy food 😢",
+                "Tissues everywhere",
+                "No hugs allowed"
+            ],
+            "causes": [
+                "Tiny virus friends",
+                "Cold weather ❄️",
+                "Not enough sleep",
+                "Forgetting your jacket",
+                "Playing in the rain"
+            ],
+            "prevention": [
+                "Wash hands with bubbles 🧼",
+                "Eat rainbow foods 🌈",
+                "Sleep like a bear 🐻",
+                "Wear warm clothes",
+                "Take vitamins daily"
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Tummy Trouble",
+            "type": "Digestive Issue",
+            "effects": [
+                "Belly doing flip-flops",
+                "Feeling bubbly inside",
+                "Not hungry at all 😕",
+                "Extra bathroom trips",
+                "Grumbly tummy sounds"
+            ],
+            "advantages": [
+                "Learning to eat better",
+                "More water drinking 💧",
+                "Taking care of our body"
+            ],
+            "disadvantages": [
+                "Missing tasty treats",
+                "Staying close to bathroom",
+                "Feeling weak and wobbly",
+                "No fun activities"
+            ],
+            "causes": [
+                "Too many sweets 🍬",
+                "Eating too fast",
+                "Unwashed fruits",
+                "Bad food combinations",
+                "Stress butterflies"
+            ],
+            "prevention": [
+                "Eat slowly like a turtle 🐢",
+                "Wash fruits and veggies",
+                "Drink lots of water",
+                "Listen to your tummy",
+                "Keep calm and happy"
+            ]
+        },
+        {
+            "id": 3,
+            "name": "Sleepy Sickness",
+            "type": "Energy Issue",
+            "effects": [
+                "Extra sleepy all day 😴",
+                "Yawning like a lion",
+                "Heavy eyelids",
+                "Slow motion moving",
+                "Fuzzy thinking"
+            ],
+            "advantages": [
+                "More rest time needed",
+                "Cozy blanket time 🛏️",
+                "Learning sleep importance"
+            ],
+            "disadvantages": [
+                "Missing playtime",
+                "Hard to focus",
+                "Less energy for fun",
+                "Feeling like a sloth 🦥"
+            ],
+            "causes": [
+                "Late night gaming",
+                "Too much screen time 📱",
+                "Irregular bedtime",
+                "Busy busy days",
+                "Worry thoughts"
+            ],
+            "prevention": [
+                "Bedtime stories 📚",
+                "No screens before sleep",
+                "Regular sleep schedule",
+                "Calm evening routine",
+                "Comfy bed setup"
+            ]
+        },
+        {
+            "id": 4,
+            "name": "Allergy Adventures",
+            "type": "Immune Response",
+            "effects": [
+                "Sneezing like a kitten 🐱",
+                "Itchy nose dancing",
+                "Watery eye waterfalls",
+                "Red nose glowing",
+                "Scratchy throat"
+            ],
+            "advantages": [
+                "Learning about nature",
+                "Understanding our body",
+                "Being more careful"
+            ],
+            "disadvantages": [
+                "Can't pet fluffy animals",
+                "Avoiding pretty flowers 🌸",
+                "Always need tissues",
+                "Feeling itchy"
+            ],
+            "causes": [
+                "Spring flower party 🌺",
+                "Dusty room dancing",
+                "Fluffy pet cuddles",
+                "Pollen floating",
+                "Weather changes"
+            ],
+            "prevention": [
+                "Clean room sparkles ✨",
+                "Air purifier friend",
+                "Taking medicine on time",
+                "Watching pollen reports",
+                "Keeping windows closed"
+            ]
+        },
+        {
+            "id": 5,
+            "name": "Growing Pains",
+            "type": "Development",
+            "effects": [
+                "Legs feeling stretchy",
+                "Achy muscles dancing",
+                "Tired bones singing",
+                "Night time discomfort",
+                "Want to rest more"
+            ],
+            "advantages": [
+                "Getting taller 📏",
+                "Stronger bones forming",
+                "Body getting bigger"
+            ],
+            "disadvantages": [
+                "Hard to sleep sometimes",
+                "Feeling uncomfortable",
+                "Less playing time",
+                "Needing more rest"
+            ],
+            "causes": [
+                "Growing too fast 🌱",
+                "Active play days",
+                "Body changes",
+                "Bone stretching",
+                "Muscle building"
+            ],
+            "prevention": [
+                "Gentle stretching 🧘‍♀️",
+                "Warm baths",
+                "Calcium foods",
+                "Regular exercise",
+                "Good sleep habits"
+            ]
+        }
+    ]
+} 

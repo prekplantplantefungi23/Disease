@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>About Disease</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Fredoka+One&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Comic Neue', cursive;
+            background-color: #fef6ff;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-image: 
+                url('data:image/svg+xml;utf8,<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg"><circle cx="2" cy="2" r="1" fill="%23ffcce6" opacity="0.5"/></svg>'),
+                url('data:image/svg+xml;utf8,<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="1" fill="%23b3e6ff" opacity="0.5"/></svg>');
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .header-container {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        h1 {
+            font-family: 'Fredoka One', cursive;
+            color: #ff69b4;
+            text-align: center;
+            margin-bottom: 30px;
+            position: sticky;
+            top: 0;
+            background-color: rgba(254, 246, 255, 0.9);
+            padding: 20px 0;
+            z-index: 100;
+            text-shadow: 2px 2px 0px #fff, 
+                        4px 4px 0px rgba(255, 105, 180, 0.2);
+        }
+
+        .pixel-cat {
+            width: 32px;
+            height: 32px;
+            position: absolute;
+            top: 50%;
+            left: -50px;
+            animation: walkAcross 15s linear infinite;
+            image-rendering: pixelated;
+        }
+
+        .pixel-granny {
+            width: 48px;
+            height: 48px;
+            position: absolute;
+            top: 40%;
+            right: -60px;
+            animation: walkBack 20s linear infinite;
+            image-rendering: pixelated;
+        }
+
+        @keyframes walkAcross {
+            from { left: -50px; }
+            to { left: calc(100% + 50px); }
+        }
+
+        @keyframes walkBack {
+            from { right: -60px; }
+            to { right: calc(100% + 60px); }
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .disease-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(255, 105, 180, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid #ffcce6;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .disease-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #ff69b4, #b3e6ff);
+            border-radius: 15px 15px 0 0;
+        }
+
+        .disease-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(255, 105, 180, 0.3);
+        }
+
+        .disease-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 2px dashed #ffcce6;
+            padding-bottom: 10px;
+        }
+
+        .disease-name {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.3em;
+            color: #ff69b4;
+            margin: 0;
+        }
+
+        .disease-type {
+            background-color: #b3e6ff;
+            color: #333;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+
+        .section {
+            margin-bottom: 15px;
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            color: #1a237e;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #e3f2fd;
+        }
+
+        .list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .list-item {
+            background-color: #f5f5f5;
+            padding: 8px 12px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .list-item:hover {
+            background-color: #e3f2fd;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            position: sticky;
+            bottom: 20px;
+            background-color: white;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+        }
+
+        .button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .edit-btn {
+            background-color: #2196f3;
+            color: white;
+        }
+
+        .delete-btn {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .add-btn {
+            font-family: 'Fredoka One', cursive;
+            background-color: #ff69b4;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(255, 105, 180, 0.3);
+        }
+
+        .add-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(255, 105, 180, 0.4);
+            background-color: #ff4da6;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 20px;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #1a237e;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            height: 100px;
+            resize: vertical;
+            min-height: 100px;
+            max-height: 300px;
+        }
+
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            cursor: pointer;
+            font-size: 1.5em;
+            color: #666;
+        }
+
+        .close:hover {
+            color: #333;
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-container">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAKUSURBVFiF7ZZNaBNBFMd/s9kPTZrYoDUfFhW0UhDBg+BBEaEepCAIgop48GIvCl4EQT2oB0E8ehA8CR4sHgQP4kHx4kHQgx+gh0YriFW0sbU2Jpv9mPEQk3S72U2yG8GD/mF5O/PevP/MvJk3C/+NHyARGa5oyneqYuerarLVOBEZrqjJD8CuVuOahf+quR4vhvtO5QvxC0D8b3egpCZHi+H4uTaAG0AcQEXkMPB8owlUNbkeQ0VSu4GXQAeAiOwDXgGxemxFTR4AVrwmVNXkLmAa6KwTrwHeAXvN2IqaHAYm/SSvqskEMAV0W0RLwAFgzgj4kbysJvcDb4BOm3gROGQQ8JO8rCb3AlNApyZyUBBZAg4Ds0BPgOQngGkXchP4GvgEHAXmge4AyU8Cr4GYg3wZOAZ8APYAX4A9AZKfAiaADgf5D+Ak8B7YDXwFdgVIflpEJhzkFWAIeAvsAL4DO1UkcQyYcJBrwDAwA2wDFoHtKiKngHEHuQYMAe+ArcACkFaRRFnk3EFeA4aB98AWU0BaReQ88NhBbgpYAOaBjIqki8hDYLODfAV4AmwC5oC0ish14L6DvAo8BTqAWSCtInIfuO0gXwOeAXFgBkirwCPghoO8BowCUSALpFXgKXDVQb4OPAfiwDSQVlWZAC45yDeAF0AUyAJpVWEcuOwgvwNEgSlgu4jcBs47yG+BeP3ZtgKvgSEH+T0QAyaBHcBLEbkEnHOQfwQSwEcgA7wAzjjIZ4EoMAGkgOciMgKcdpB/qr97HogBz0TkLHDSQf4FSBJ8M/p+Ny0RGQUGHeRLQITgm9H3TiYiV4ABB/kKECH4ZvR9lYrIdeCAg3wVsG/G5L8O/D/+gfwGR43kqzE0EgIAAAAASUVORK5CYII=" class="pixel-cat" alt="Walking Cat">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAMESURBVGiB7ZlNaBNBGIbfmd1sG5PWpFVRqFUQFRQUDx48CaIHQbyJICiI4MWjFw/iQRD8OfhzEjwIHgQP4kHx4kHwB/RQrYpVsWpttU0am+xuZjwkTbvZn2yyu4kg+8LSzH7zzfO+M9/M7A7w3/6hMfQNA9gP4AiAbQDWAUgDWACQA/AWwBMAtwDMxjFA0gd/FMAFAKcBpFzqLwF4COASgOcB4wY2AHcBaAC0gGYAuA5gfVwEzgNQQyS3WwXA2ThI7APwPUJyu1UBHIqSQArAx5jI/7QZAON+SaQAfIqZgEFiyl3dncBlAGrIGV8BcBfAKQBbAKwFkAGwHcB5AA8AyC51vwHYH4TA7ZDkXwI4BGCVSywGYDeAMQALLvV/hFkdvRK4EoL8JIBNPuJuBPDMJc6cX/LpgOQPBoxvxH7sEfN7WAL3ApB/DGBlyHGGPWJ/DEpgwif5zwDWRxjrqEf8934JTPkg/xNANuJ4QwAUl1hTPZMHgNMA5n2QB4AJwKMAcaY9Yk71RF4HsOyTvGHzAHYGiJXxiF0OsxeMAPgWkLxhBQBHfMYb8BHfV/9g2BEAX2MgYVgRwHEfMZMA3vUaecM2A5iJkYRhJQAnPWLFALwJQr4V2wLgdR9IGFYGcNYl3moAb4OSb8XPAJjsIwnDKgDGHGKkAbwPQ94wsw/0k4RhVQAXLXFWAJgKS96wNQBe9JmEYTUA4y1xfO2IngnY7QCAz30mYYQ6b4qzEsDbKMkbthbAs34QAFAHcNEUYxWA91GTN2wdgKf9IADgUjPGKgAfekXesGEAT/pE4HJznNUAPvaSvGHrATzuE4HxZnwGwKdekzdsA4CH/SAA4GozNgPgc7/IG7YRwL0+ELjWHIMB+NIP8oZtAnC7DwSuN8dgAL70k7xhmwHc6AOBG80xGIAvvSLPXeqwAOQvA0j4JF8DcA7ArwB1agBu+oxnWBHAGEcP7QqAZ+i8SDQM4ASAowB2AshiZQstAJgC8AjAbQBzAcYNbL8B0KRqXys6ht8AAAAASUVORK5CYII=" class="pixel-granny" alt="Walking Granny">
+            <h1>About Disease</h1>
+        </div>
+        <button class="button add-btn" onclick="openAddModal()">✨ Add New Disease ✨</button>
+        <div class="menu-grid" id="diseases-container"></div>
+    </div>
+
+    <!-- Add/Edit Modal -->
+    <div id="diseaseModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle">Add New Disease</h2>
+            <form id="diseaseForm">
+                <input type="hidden" id="diseaseId">
+                <div class="form-group">
+                    <label for="name">Disease Name:</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="type">Type:</label>
+                    <input type="text" id="type" required>
+                </div>
+                <div class="form-group">
+                    <label for="effects">Effects (one per line):</label>
+                    <textarea id="effects" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="advantages">Advantages (one per line):</label>
+                    <textarea id="advantages" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="disadvantages">Disadvantages (one per line):</label>
+                    <textarea id="disadvantages" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="causes">Causes (one per line):</label>
+                    <textarea id="causes" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="prevention">Prevention Methods (one per line):</label>
+                    <textarea id="prevention" required></textarea>
+                </div>
+                <button type="submit" class="button">Save</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let diseases = [];
+        let currentEditId = null;
+
+        // Load diseases from JSON file
+        async function loadDiseases() {
+            try {
+                const response = await fetch('diseases.json');
+                const data = await response.json();
+                diseases = data.diseases;
+                displayDiseases();
+            } catch (error) {
+                console.error('Error loading diseases:', error);
+            }
+        }
+
+        // Display diseases
+        function displayDiseases() {
+            const container = document.getElementById('diseases-container');
+            container.innerHTML = '';
+
+            diseases.forEach(disease => {
+                const card = document.createElement('div');
+                card.className = 'disease-card';
+                card.innerHTML = `
+                    <div class="disease-header">
+                        <h2 class="disease-name">${disease.name}</h2>
+                        <span class="disease-type">${disease.type}</span>
+                    </div>
+                    <div class="section">
+                        <h3 class="section-title">Effects</h3>
+                        <ul class="list">
+                            ${disease.effects.map(effect => `<li class="list-item">${effect}</li>`).join('')}
+                        </ul>
+                    </div>
+                    <div class="section">
+                        <h3 class="section-title">Advantages</h3>
+                        <ul class="list">
+                            ${disease.advantages.map(adv => `<li class="list-item">${adv}</li>`).join('')}
+                        </ul>
+                    </div>
+                    <div class="section">
+                        <h3 class="section-title">Disadvantages</h3>
+                        <ul class="list">
+                            ${disease.disadvantages.map(dis => `<li class="list-item">${dis}</li>`).join('')}
+                        </ul>
+                    </div>
+                    <div class="section">
+                        <h3 class="section-title">Causes</h3>
+                        <ul class="list">
+                            ${disease.causes.map(cause => `<li class="list-item">${cause}</li>`).join('')}
+                        </ul>
+                    </div>
+                    <div class="section">
+                        <h3 class="section-title">Prevention</h3>
+                        <ul class="list">
+                            ${disease.prevention.map(prev => `<li class="list-item">${prev}</li>`).join('')}
+                        </ul>
+                    </div>
+                    <div class="button-group">
+                        <button class="button edit-btn" onclick="openEditModal(${disease.id})">Edit</button>
+                        <button class="button delete-btn" onclick="deleteDisease(${disease.id})">Delete</button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Modal functions
+        function openAddModal() {
+            currentEditId = null;
+            document.getElementById('modalTitle').textContent = 'Add New Disease';
+            document.getElementById('diseaseForm').reset();
+            document.getElementById('diseaseModal').style.display = 'block';
+        }
+
+        function openEditModal(id) {
+            currentEditId = id;
+            const disease = diseases.find(d => d.id === id);
+            if (disease) {
+                document.getElementById('modalTitle').textContent = 'Edit Disease';
+                document.getElementById('diseaseId').value = disease.id;
+                document.getElementById('name').value = disease.name;
+                document.getElementById('type').value = disease.type;
+                document.getElementById('effects').value = disease.effects.join('\n');
+                document.getElementById('advantages').value = disease.advantages.join('\n');
+                document.getElementById('disadvantages').value = disease.disadvantages.join('\n');
+                document.getElementById('causes').value = disease.causes.join('\n');
+                document.getElementById('prevention').value = disease.prevention.join('\n');
+                document.getElementById('diseaseModal').style.display = 'block';
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('diseaseModal').style.display = 'none';
+        }
+
+        // Form submission
+        document.getElementById('diseaseForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = {
+                id: currentEditId || Math.max(...diseases.map(d => d.id), 0) + 1,
+                name: document.getElementById('name').value,
+                type: document.getElementById('type').value,
+                effects: document.getElementById('effects').value.split('\n').filter(line => line.trim()),
+                advantages: document.getElementById('advantages').value.split('\n').filter(line => line.trim()),
+                disadvantages: document.getElementById('disadvantages').value.split('\n').filter(line => line.trim()),
+                causes: document.getElementById('causes').value.split('\n').filter(line => line.trim()),
+                prevention: document.getElementById('prevention').value.split('\n').filter(line => line.trim())
+            };
+
+            if (currentEditId) {
+                const index = diseases.findIndex(d => d.id === currentEditId);
+                if (index !== -1) {
+                    diseases[index] = formData;
+                }
+            } else {
+                diseases.push(formData);
+            }
+
+            saveDiseases();
+            closeModal();
+            displayDiseases();
+        });
+
+        // Delete disease
+        function deleteDisease(id) {
+            if (confirm('Are you sure you want to delete this disease?')) {
+                diseases = diseases.filter(d => d.id !== id);
+                saveDiseases();
+                displayDiseases();
+            }
+        }
+
+        // Save diseases to JSON file
+        async function saveDiseases() {
+            try {
+                const response = await fetch('diseases.json', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ diseases }, null, 2)
+                });
+                if (!response.ok) {
+                    throw new Error('Failed to save diseases');
+                }
+            } catch (error) {
+                console.error('Error saving diseases:', error);
+                alert('Error saving changes. Please try again.');
+            }
+        }
+
+        // Initialize
+        loadDiseases();
+    </script>
+</body>
+</html> 
